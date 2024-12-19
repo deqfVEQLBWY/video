@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Redirect</title>
+    <script>
+        function checkPass(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            const originalPass = "1467"; // Original password as a string
+            const enteredPass = document.getElementById('pass').value;
+            if (originalPass === enteredPass) {
+                window.location.href = 'video.html';
+            } else {
+                alert("Please enter the correct password.");
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 20px;
+            padding: 0;
+            background-color: azure;
+        }
+
+        form {
+            border: 2px solid black;
+            display: grid;
+            margin: 45px;
+            padding: 14px;
+            background-color: aquamarine;
+            border-radius: 7px;
+        }
+
+        button {
+            border: none;
+            padding: 10px;
+            margin: 6px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        input {
+            margin: 12px;
+            padding: 8px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="checkPass(event)">
+        <strong>Enter password: </strong>
+        <input type="password" required id="pass">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullscreen Video</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        video {
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            object-fit: contain; /* Ensure the entire video is visible */
+        }
+    </style>
+</head>
+<body>
+    <video id="myVideo" src="winner.mp4" controls autoplay></video>
+
+    <script>
+        const videoElement = document.getElementById('myVideo');
+        // Attempt to play video with sound
+        videoElement.play().then(() => {
+            console.log("Video autoplayed with sound.");
+        }).catch((error) => {
+            console.warn("Autoplay with sound failed, retrying muted...", error);
+            videoElement.muted = true; // Fallback: Play muted if autoplay fails
+            videoElement.play();
+        });
+    </script>
+</body>
+</html>
